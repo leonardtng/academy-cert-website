@@ -7,7 +7,7 @@ localStorage.setItem('username', 'johndoe');
 localStorage.setItem('password', 'boogle');
 
 let usernameState = localStorage.getItem('username');
-let passwordState = localStorage.getItem('password')
+let passwordState = localStorage.getItem('password');
 
 function checkUser() {
     let usernameInput = usernameSpace.value;
