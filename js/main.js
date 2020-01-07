@@ -3,12 +3,16 @@ let displayIncorrect = document.querySelector('.incorrect');
 let usernameSpace = document.getElementById('username');
 let passwordSpace = document.getElementById('password');
 
-let loginDetails = {username: 'johndoe', password: 'boogle'};
+localStorage.setItem('username', 'johndoe');
+localStorage.setItem('password', 'boogle');
 
-function checkUser(){
+let usernameState = localStorage.getItem('username');
+let passwordState = localStorage.getItem('password')
+
+function checkUser() {
     let usernameInput = usernameSpace.value;
     let passwordInput = passwordSpace.value;
-    if (usernameInput == loginDetails.username && passwordInput == loginDetails.password) {
+    if (usernameInput == usernameState && passwordInput == passwordState) {
         window.location.href = 'home.html';
     } else {
         displayIncorrect.textContent = 'Invalid Account';
@@ -16,8 +20,16 @@ function checkUser(){
     }
 }
 
-loginButton.addEventListener('click', checkUser);
+loginButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    checkUser();
+});
 
-
+document.addEventListener('keyup', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        checkUser();
+    }
+});
 
 
